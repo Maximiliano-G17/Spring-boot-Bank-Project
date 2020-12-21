@@ -1,15 +1,18 @@
 package com.spring.boot.app_banco.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Table
+
+@Entity
 public class Bank {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_bank")
 	private Long id;
 	private String name;
 	private String address;

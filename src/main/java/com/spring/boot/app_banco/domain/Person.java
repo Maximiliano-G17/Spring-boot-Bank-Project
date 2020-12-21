@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 @Entity
 public class Person {
@@ -20,7 +19,7 @@ public class Person {
 	private String address;
 	private double balance;
 	@ManyToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "id_bank")
 	private Bank bank;	
 		
 	public Person() {
@@ -61,7 +60,12 @@ public class Person {
 	public void setbalance(double balance) {
 		this.balance = balance;
 	}
-	
+	public Bank getBank() {
+		return bank;
+	}
+	public void setBank(Bank bank) {
+		this.bank = bank;
+	}
 	@Override
 	public String toString() {
 		return "Persona [id=" + id + ", dni=" + dni + "]";
