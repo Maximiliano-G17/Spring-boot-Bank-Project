@@ -4,11 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "persona")
-public class Persona {
+public class Person {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +19,11 @@ public class Persona {
 	private int dni;
 	private String address;
 	private double balance;
+	@ManyToOne
+	@JoinColumn(name = "id")
+	private Bank bank;	
 		
-	public Persona() {
-		super();
+	public Person() {
 	}
 	public Long getId() {
 		return id;
