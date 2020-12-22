@@ -11,5 +11,4 @@ public interface PersonRepository extends JpaRepository<Person, Long>{
 	List<Person> findByBankId(Long id);
 
 	List<Person> findBySurname(String surname);
-
 }

@@ -13,7 +13,6 @@ import com.spring.boot.app_banco.service.BankService;
 
 import static org.assertj.core.api.Assertions.*;
 
-
 @SpringBootTest
 public class BankServiceTest {
 	

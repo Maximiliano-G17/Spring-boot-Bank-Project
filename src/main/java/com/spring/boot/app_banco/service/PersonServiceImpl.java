@@ -13,6 +13,11 @@ public class PersonServiceImpl implements PersonService{
 
 	@Autowired
 	private PersonRepository personRepo;
+	
+	@Override
+	public List<Person> buscarTodos() {
+		return personRepo.findAll();
+	}
 
 	@Override
 	public Person buscarPorId(Long id) {
@@ -29,5 +34,13 @@ public class PersonServiceImpl implements PersonService{
 		return personRepo.findBySurname(apellido);
 	}
 
-	
+	@Override
+	public Person guardarPersona(Person personaAGuardar) {
+		return personRepo.save(personaAGuardar);
+	}
+
+	@Override
+	public void EliminarPersona(Long id) {
+		personRepo.deleteById(id);
+	}
 }

@@ -12,4 +12,9 @@ public interface PersonService {
 
 	List<Person> buscarPorApellido(String apellido);
 
+	Person guardarPersona(Person personaAGuardar);
+
+	void EliminarPersona(Long id);
+
+	List<Person> buscarTodos();
 }

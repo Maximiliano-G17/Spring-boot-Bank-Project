@@ -13,12 +13,20 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-
 @SpringBootTest
 public class PersonServiceTest {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@Test
+	public void buscarTodasLasPersonas_retornaUnaListaDePersonas() {
+		
+		List<Person> listaDePersonas = personService.buscarTodos();
+		
+		assertThat(listaDePersonas).isNotNull();
+		assertEquals(5,listaDePersonas.size());
+	}
 	
 	@Test
 	public void buscarPorId_conIdExistente_retornaUnaPersonaEspecifica() {
@@ -76,5 +84,18 @@ public class PersonServiceTest {
 		
 		assertThat(personasBuscadasConApellido).isEmpty();
 	}
-
+	
+//	@Test
+//	public void guardarPersona() {
+//		Person personaAGuardar = new Person();
+//		personaAGuardar.setaddress("San Martin 222");
+//		personaAGuardar.setbalance(46000);
+//		personaAGuardar.setDni(22541256);
+//		personaAGuardar.setName("Carlos");
+//		personaAGuardar.setSurname("Monzon");
+//		
+//		Person personaGuardada = personService.guardarPersona(personaAGuardar);
+//		
+//		assertEquals(personaAGuardar.getName(), personaGuardada.getName());
+//	}
 }
