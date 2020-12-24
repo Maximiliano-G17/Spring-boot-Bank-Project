@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Personas</title>
+</head>
+<body>
+	<table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	    	<th>Id</th>
+	      	<th>Name</th>
+			<th>Surname</th>
+			<th>D.N.I</th>
+			<th>Address</th>
+			<th>Balance</th>
+			<th>Banco Adherido</th>
+			<th>Editar</th>
+			<th>Eliminar</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  		<tr th:each="persona:${listaDePersonas}">
+				<th scope="row" th:text="${persona.id}"></th>
+				<td th:text="${persona.name}"></td>
+				<td th:text="${persona.surname}"></td>
+				<td th:text="${persona.dni}"></td>
+				<td th:text="${persona.address}"></td>
+				<td th:text="${persona.balance}"></td>		
+				<td th:text="${persona.bank}"></td>
+				<td>
+					<a th:href="@{/personas/update/} + ${persona.id}" th:text="Edit"></a>
+				</td>
+				<td>
+				<a th:href="@{/personas/delete/} + ${persona.id}" th:text="Delete"
+					onclick="return confirm('seguro de eliminar el registo')"></a>
+				</td>
+			</tr>
+	  </tbody>
+	</table>
+</body>
+</html>

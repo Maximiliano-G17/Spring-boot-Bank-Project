@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+</head>
+<body>
+	<h2>Register Person</h2>
+	<form th:action="@{/personas/postRegistrar}" th:object="${person}"
+		method="post">
+		<input type="hidden" th:field="*{id}" />
+		<div class="form-group-row">
+			<label class="col-md-2" for="name">Name</label>
+			<input type="text" th:field="*{name}" class="form-control-sm col-md-6" id="name">
+		</div>
+		<br> <br>
+		<div class="form-group-row">
+			<label class="col-md-2" for="surname">Surname</label>
+			<input type="text" th:field="*{surname}" class="form-control-sm col-md-6" id="surname">
+		</div>
+		<br> <br>
+		<div class="form-group-row">
+			<label class="col-md-2" for="dni">D.N.I</label>
+			<input type="text" th:field="*{dni}" class="form-control-sm col-md-6" id="dni">
+		</div>	
+		<br><br> 
+		<div class="form-group-row">
+			<label class="col-md-2" for="address">Address</label>
+			<input type="text" th:field="*{address}" class="form-control-sm col-md-6" id="address">
+		</div>
+		<br><br> 
+		<div class="form-group-row">
+			<label class="col-md-2" for="balance">Balance</label>
+			<input type="text" th:field="*{balance}" class="form-control-sm col-md-6" id="balance">
+		</div>
+		<br><br> 
+		<div class="form-group-row">
+			<label class="col-md-2" for="bank">Bank</label>
+				<select name="bank">
+	           		 <option th:each="banco : ${listaDeBancos}"
+	              		th:value="${banco.id}" 
+	              		th:text="${banco.name}"
+	              	/>
+	         	 </select>
+		</div>
+		<br><br> 
+		<input type="submit" value="Confirm">
+	</form>
+</body>
+</html>
