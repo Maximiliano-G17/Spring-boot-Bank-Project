@@ -16,9 +16,13 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest
 public class BankServiceTest {
 	
-	@Autowired
 	private BankService bankService;
-	
+		
+	@Autowired
+	public BankServiceTest(BankService bankService) {
+		this.bankService = bankService;
+	}
+
 	@Test
 	public void buscarPorId_conIdExistente_retornaBancoEspecifico() {
 		Long id=1L;

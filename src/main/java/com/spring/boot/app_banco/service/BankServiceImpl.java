@@ -11,8 +11,12 @@ import com.spring.boot.app_banco.repository.BankRepository;
 @Service
 public class BankServiceImpl implements BankService{
 	
-	@Autowired
 	private BankRepository bankRepo;
+
+	@Autowired
+	public BankServiceImpl(BankRepository bankRepo) {
+		this.bankRepo = bankRepo;
+	}
 
 	@Override
 	public Bank buscarPorId(Long id) {

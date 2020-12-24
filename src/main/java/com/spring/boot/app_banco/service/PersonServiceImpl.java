@@ -11,9 +11,13 @@ import com.spring.boot.app_banco.repository.PersonRepository;
 @Service
 public class PersonServiceImpl implements PersonService{
 
-	@Autowired
 	private PersonRepository personRepo;
 	
+	@Autowired
+	public PersonServiceImpl(PersonRepository personRepo) {
+		this.personRepo = personRepo;
+	}
+
 	@Override
 	public List<Person> buscarTodos() {
 		return personRepo.findAll();

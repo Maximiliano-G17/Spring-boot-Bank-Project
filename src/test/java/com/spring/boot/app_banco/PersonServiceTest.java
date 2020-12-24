@@ -16,16 +16,20 @@ import org.junit.jupiter.api.Test;
 @SpringBootTest
 public class PersonServiceTest {
 	
-	@Autowired
 	private PersonService personService;
 	
+	@Autowired	
+	public PersonServiceTest(PersonService personService) {
+		this.personService = personService;
+	}
+
 	@Test
 	public void buscarTodasLasPersonas_retornaUnaListaDePersonas() {
 		
 		List<Person> listaDePersonas = personService.buscarTodos();
 		
 		assertThat(listaDePersonas).isNotNull();
-		assertEquals(5,listaDePersonas.size());
+		assertEquals(6,listaDePersonas.size());
 	}
 	
 	@Test
