@@ -2,10 +2,12 @@ package com.spring.boot.app_banco.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,13 +48,20 @@ public class PersonController {
 	}
 	
 	@PostMapping("/postRegistrar")
-	public String postRegister(@ModelAttribute Person person) {
+	public String postRegister(@Valid @ModelAttribute Person person,BindingResult result,Model model) {
+		System.out.println(person);
+		if (result.hasErrors()) {
+			List<Bank> listaDeBancos = bankService.buscarTodos();
+			model.addAttribute("listaDeBancos", listaDeBancos);
+			model.addAttribute("person", new Person());
+			return "/views/register";
+		}
 		personService.guardarPersona(person);
 		return "redirect:/personas/";
 	}
 	
 	@GetMapping("/update/{id}")
-	public String preUpdate(@PathVariable("id") Long idPerson, Model model) {
+	public String update(@PathVariable("id") Long idPerson, Model model) {
 		Person personToUpdate = personService.buscarPorId(idPerson);
 		if (personToUpdate == null) {
 			return "redirect:/personas/";
@@ -64,9 +73,9 @@ public class PersonController {
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String preDelete(@PathVariable("id") Long idPerson) {
-		Person personAEliminar = personService.buscarPorId(idPerson);
-		if (personAEliminar == null) {
+	public String delete(@PathVariable("id") Long idPerson) {
+		Person personaAEliminar = personService.buscarPorId(idPerson);
+		if (personaAEliminar == null) {
 			return "redirect:/personas/";
 		}
 		personService.EliminarPersona(idPerson);

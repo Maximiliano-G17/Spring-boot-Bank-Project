@@ -13,26 +13,31 @@
 		<div class="form-group-row">
 			<label class="col-md-2" for="name">Name</label>
 			<input type="text" th:field="*{name}" class="form-control-sm col-md-6" id="name">
-		</div>
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>		
+		</div>	
 		<br> <br>
 		<div class="form-group-row">
 			<label class="col-md-2" for="surname">Surname</label>
 			<input type="text" th:field="*{surname}" class="form-control-sm col-md-6" id="surname">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></small>
 		</div>
 		<br> <br>
 		<div class="form-group-row">
 			<label class="col-md-2" for="dni">D.N.I</label>
 			<input type="text" th:field="*{dni}" class="form-control-sm col-md-6" id="dni">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></small>
 		</div>	
 		<br><br> 
 		<div class="form-group-row">
 			<label class="col-md-2" for="address">Address</label>
 			<input type="text" th:field="*{address}" class="form-control-sm col-md-6" id="address">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small>
 		</div>
 		<br><br> 
 		<div class="form-group-row">
 			<label class="col-md-2" for="balance">Balance</label>
 			<input type="text" th:field="*{balance}" class="form-control-sm col-md-6" id="balance">
+			<small class="form-text text-danger" th:if="${#fields.hasErrors('balance')}" th:errors="*{balance}"></small>
 		</div>
 		<br><br> 
 		<div class="form-group-row">
